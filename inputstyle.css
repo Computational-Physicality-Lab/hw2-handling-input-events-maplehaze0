@@ -26,3 +26,13 @@ body {
   background-color: red;
   box-sizing: border-box;
 }
+
+/* .draggable {
+  position: absolute;
+  background-color: yellow;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  cursor: move;
+} */
