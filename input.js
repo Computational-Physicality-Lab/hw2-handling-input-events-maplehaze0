@@ -29,8 +29,7 @@ function start_program() {
     select_box.classList.add(name);
     select_box.style.cursor = "move";
 
-    Click_or_dblClick(select_box);
-    Touch_or_dblTouch(select_box);
+    addTouchOrClickEvent(select_box);
     num++;
   }
 }
@@ -39,77 +38,42 @@ function re_start_single(select_box) {
   console.log("re start single");
   select_box.style.cursor = "move";
 
-  Click_or_dblClick(select_box);
-  Touch_or_dblTouch(select_box);
+  addTouchOrClickEvent(select_box);
 
 }
 
-function Click_or_dblClick(box) {
-  console.log("click or dblclick");
-  let clickedTimes = 0;
+function addTouchOrClickEvent(box) {
+  let clickedOrTouchedTimes = 0;
 
-  const doClick = () => {
-    clickedTimes++;
+  const doClickOrTouch = () => {
+    clickedOrTouchedTimes++;
   };
 
   const reset = () => {
-    clickedTimes = 0;
+    clickedOrTouchedTimes = 0;
   };
 
-  box.addEventListener("mousedown", (e) => {
-    doClick();
+  const handleEvent = (e) => {
+    doClickOrTouch();
     setTimeout(() => {
-      if (clickedTimes === 1 && can_change) { //single click
+      if (clickedOrTouchedTimes === 1 && can_change) {
         can_move = 1;
         can_change = 1;
-        console.log(1);
         DragStart(e, box);
-        
-      } else if (clickedTimes == 2) {
+      } else if (clickedOrTouchedTimes === 2) {
         can_move = 1;
-        // can_change = 1;
         Stick(e, box);
-        console.log(2);
       }
-
       reset();
     }, 500);
-  });
-}
-
-function Touch_or_dblTouch(box) {
-  console.log("Touch and dblTouch");
-  let touchedTimes = 0;
-
-  const doTouch = () => {
-    touchedTimes++;
   };
 
-  const reset = () => {
-    touchedTimes = 0;
-  };
-
-  box.addEventListener("touchstart", (e) => {
-    doTouch();
-    setTimeout(() => {
-      if (touchedTimes === 1 && can_change) { //single click
-        can_move = 1;
-        can_change = 1;
-        console.log(1);
-        TouchStart(e, box);
-        
-      } else if (touchedTimes == 2) {
-        can_move = 1;
-        // can_change = 1;
-        TouchStick(e, box);
-        console.log(2);
-      }
-
-      reset();
-    }, 500);
-  });
+  if ('ontouchstart' in window) {
+    box.addEventListener("touchstart", handleEvent);
+  } else {
+    box.addEventListener("mousedown", handleEvent);
+  }
 }
-
 
 function DragStart(e, box) {
   console.log("drag start");
@@ -133,37 +97,69 @@ function DragStart(e, box) {
     FASTSTOP=1;
     FastStop(box, handleDrag, handleDragEnd);
 
-    box.addEventListener("mousemove", handleDrag);
-    box.addEventListener("mouseup", handleDragEnd);
+    if ('ontouchstart' in window) {
+      box.addEventListener("touchmove", handleDrag);
+      box.addEventListener("touchend", handleDragEnd);
+      box.addEventListener("touchcancel", handleDragEnd);
+    } else {
+      box.addEventListener("mousemove", handleDrag);
+      box.addEventListener("mouseup", handleDragEnd);
+    }
   }
 }
+// function DragStart(e, box) {
+//   console.log("drag start");
+//   if (can_move){
+//     e = e || window.event;
+//     e.preventDefault();
 
-function TouchStart(e, box) {
-  console.log("touch start");
-  if (can_move){
-    e = e || window.event;
-    e.preventDefault();
-
-    // get first position
-    currentPosX = e.clientX;
-    currentPosY = e.clientY;
+//     // get first position
+//     currentPosX = e.clientX;
+//     currentPosY = e.clientY;
     
-    // save initial position
-    startPosX = box.offsetLeft;
-    startPosY = box.offsetTop;
+//     // save initial position
+//     startPosX = box.offsetLeft;
+//     startPosY = box.offsetTop;
 
-    //get now
-    NOW_USE = box.classList[1];
+//     //get now
+//     NOW_USE = box.classList[1];
 
-    const handleTouch = (e) => Touch(e, box);
-    const handleTouchEnd = (e) => TouchEnd(e, box, handleTouch, handleTouchEnd);
-    FASTSTOP=1;
-    FastStopTouch(box, handleTouch, handleTouchEnd);
+//     const handleDrag = (e) => Drag(e, box);
+//     const handleDragEnd = (e) => DragEnd(e, box, handleDrag, handleDragEnd);
+//     FASTSTOP=1;
+//     FastStop(box, handleDrag, handleDragEnd);
 
-    box.addEventListener("touchmove", handleTouch);
-    box.addEventListener("touchend", handleTouchEnd);
-  }
-}
+//     box.addEventListener("mousemove", handleDrag);
+//     box.addEventListener("mouseup", handleDragEnd);
+//   }
+// }
+
+// function TouchStart(e, box) {
+//   console.log("touch start");
+//   if (can_move){
+//     e = e || window.event;
+//     e.preventDefault();
+
+//     // get first position
+//     currentPosX = e.clientX;
+//     currentPosY = e.clientY;
+    
+//     // save initial position
+//     startPosX = box.offsetLeft;
+//     startPosY = box.offsetTop;
+
+//     //get now
+//     NOW_USE = box.classList[1];
+
+//     const handleTouch = (e) => Touch(e, box);
+//     const handleTouchEnd = (e) => TouchEnd(e, box, handleTouch, handleTouchEnd);
+//     FASTSTOP=1;
+//     FastStopTouch(box, handleTouch, handleTouchEnd);
+
+//     box.addEventListener("touchmove", handleTouch);
+//     box.addEventListener("touchend", handleTouchEnd);
+//   }
+// }
 
 function FastStop(select_box, handleDrag, handleDragEnd) {
   console.log("fast stop");
