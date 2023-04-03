@@ -78,10 +78,10 @@ function Click_or_dblClick(box) {
 }
 
 function Touch_or_dblTouch(box) {
-  console.log("click or dblclick");
+  console.log("Touch and dblTouch");
   let touchedTimes = 0;
 
-  const doClick = () => {
+  const doTouch = () => {
     touchedTimes++;
   };
 
@@ -90,7 +90,7 @@ function Touch_or_dblTouch(box) {
   };
 
   box.addEventListener("touchstart", (e) => {
-    doClick();
+    doTouch();
     setTimeout(() => {
       if (touchedTimes === 1 && can_change) { //single click
         can_move = 1;
