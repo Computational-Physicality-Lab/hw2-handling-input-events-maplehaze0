@@ -100,7 +100,7 @@ function DragStart(e, box) {
     if ('ontouchstart' in window) {
       box.addEventListener("touchmove", handleDrag);
       box.addEventListener("touchend", handleDragEnd);
-      box.addEventListener("touchcancel", handleDragEnd);
+      // box.addEventListener("touchcancel", handleDragEnd);
     } else {
       box.addEventListener("mousemove", handleDrag);
       box.addEventListener("mouseup", handleDragEnd);
