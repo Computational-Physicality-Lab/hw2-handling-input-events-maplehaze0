@@ -21,7 +21,7 @@ var FASTSTOP = 0;
 start_program();
 
 function start_program() {
-  console.log("start program");
+  console.log("start program!!!");
   var num = 1;
   for (var i=0; i<boxes.length; i++){
     var name = "num" + String(num);
