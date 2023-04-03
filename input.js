@@ -89,7 +89,7 @@ function Touch_or_dblTouch(box) {
     touchedTimes = 0;
   };
 
-  box.addEventListener("mousedown", (e) => {
+  box.addEventListener("touchstart", (e) => {
     doClick();
     setTimeout(() => {
       if (touchedTimes === 1 && can_change) { //single click
@@ -185,7 +185,7 @@ function FastStop(select_box, handleDrag, handleDragEnd) {
 }
 function FastStopTouch(select_box, handleTouch, handleTouchEnd) {
   console.log("fast stop");
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener('touchcancel', (e) => {
     if (e.keyCode === 27 && NOW_USE == select_box.classList[1] && FASTSTOP==1) {
       FASTSTOP = 0
       // console.log("FastStop");
