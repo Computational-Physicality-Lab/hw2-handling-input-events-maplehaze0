@@ -217,24 +217,24 @@ function Drag(e, box) {
     currentPosY = e.clientY;
   }
 }
-function Touch(e, box) {
-  console.log("Touch");
-  if (can_move){
-    e = e || window.event;
-    e.preventDefault();
+// function Touch(e, box) {
+//   console.log("Touch");
+//   if (can_move){
+//     e = e || window.event;
+//     e.preventDefault();
 
-    var deltaX = e.clientX - currentPosX;
-    var deltaY = e.clientY - currentPosY;
+//     var deltaX = e.clientX - currentPosX;
+//     var deltaY = e.clientY - currentPosY;
 
-    // Set new position:
-    box.style.top = box.offsetTop + deltaY + "px";//control Y
-    box.style.left = box.offsetLeft + deltaX + "px";//control X
+//     // Set new position:
+//     box.style.top = box.offsetTop + deltaY + "px";//control Y
+//     box.style.left = box.offsetLeft + deltaX + "px";//control X
 
-    // save current position
-    currentPosX = e.clientX;
-    currentPosY = e.clientY;
-  }
-}
+//     // save current position
+//     currentPosX = e.clientX;
+//     currentPosY = e.clientY;
+//   }
+// }
 
 
 function DragEnd(e, box, handleDrag, handleDragEnd) {
@@ -266,46 +266,52 @@ function DragEnd(e, box, handleDrag, handleDragEnd) {
   }
 
   // Stop moving when mouse button is released
-  box.removeEventListener("mousemove", handleDrag);
-  box.removeEventListener("mouseup", handleDragEnd);
-  can_move = 1;
-  can_change = 1;
-}
-
-function TouchEnd(e, box, handleTouch, handleTouchEnd) {
-  e = e || window.event;
-  e.preventDefault();
-  // console.log(box);
-  var rect = box.getBoundingClientRect();
-  var deltaX = e.clientX - currentPosX;
-  var deltaY = e.clientY - currentPosY;
-
-  // console.log(startPosX, startPosY.offsetTop + deltaY,box.offsetLeft + deltaX)
-  console.log("touch end");
-  if (rect.left == startPosX + deltaX && rect.top == startPosY + deltaY && can_change) {
-    var nowColor = box.style.backgroundColor;
-    console.log(nowColor);
-    if (nowColor == "red"){
-      box.style.backgroundColor = "blue";
-    
-      //set other box to red
-      document.querySelectorAll('.target').forEach(function(otherBox) {
-        if (otherBox != box) {
-          otherBox.style.backgroundColor = "red";
-        }
-      });
-    } else {
-      box.style.backgroundColor = "red";
-    }
-    can_change = 0;
+  if ('ontouchstart' in window) {
+    box.removeEventListener("touchmove", handleDrag);
+    box.removeEventListener("touchend", handleDragEnd);
+  } else {
+    box.removeEventListener("mousemove", handleDrag);
+    box.removeEventListener("mouseup", handleDragEnd);
   }
-
-  // Stop moving when mouse button is released
-  box.removeEventListener("touchmove", handleTouch);
-  box.removeEventListener("touchend", handleTouchEnd);
+  re_start_single(box);
   can_move = 1;
   can_change = 1;
 }
+
+// function TouchEnd(e, box, handleTouch, handleTouchEnd) {
+//   e = e || window.event;
+//   e.preventDefault();
+//   // console.log(box);
+//   var rect = box.getBoundingClientRect();
+//   var deltaX = e.clientX - currentPosX;
+//   var deltaY = e.clientY - currentPosY;
+
+//   // console.log(startPosX, startPosY.offsetTop + deltaY,box.offsetLeft + deltaX)
+//   console.log("touch end");
+//   if (rect.left == startPosX + deltaX && rect.top == startPosY + deltaY && can_change) {
+//     var nowColor = box.style.backgroundColor;
+//     console.log(nowColor);
+//     if (nowColor == "red"){
+//       box.style.backgroundColor = "blue";
+    
+//       //set other box to red
+//       document.querySelectorAll('.target').forEach(function(otherBox) {
+//         if (otherBox != box) {
+//           otherBox.style.backgroundColor = "red";
+//         }
+//       });
+//     } else {
+//       box.style.backgroundColor = "red";
+//     }
+//     can_change = 0;
+//   }
+
+//   // Stop moving when mouse button is released
+//   box.removeEventListener("touchmove", handleTouch);
+//   box.removeEventListener("touchend", handleTouchEnd);
+//   can_move = 1;
+//   can_change = 1;
+// }
 
 
 function Stick(e, box) {
