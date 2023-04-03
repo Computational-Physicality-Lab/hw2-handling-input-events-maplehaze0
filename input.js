@@ -28,11 +28,9 @@ function start_program() {
     var select_box = boxes[i];
     select_box.classList.add(name);
     select_box.style.cursor = "move";
-    // const handleDrag = (e) => Drag(e, select_box);
-    // const handleDragEnd = (e) => DragEnd(e, select_box, handleDrag, handleDragEnd);
-    // box.addEventListener("mousedown", (e) => DragStart(e, box, handleDrag, handleDragEnd));
+
     Click_or_dblClick(select_box);
-    select_box.addEventListener("touchstart", console.log("hello"));
+    Touch_or_dblTouch(select_box);
     num++;
   }
 }
@@ -40,10 +38,10 @@ function start_program() {
 function re_start_single(select_box) {
   console.log("re start single");
   select_box.style.cursor = "move";
-  // const handleDrag = (e) => Drag(e, select_box);
-  // const handleDragEnd = (e) => DragEnd(e, select_box, handleDrag, handleDragEnd);
+
   Click_or_dblClick(select_box);
-  // FastStop(select_box, handleDrag, handleDragEnd);
+  Touch_or_dblTouch(select_box);
+
 }
 
 function Click_or_dblClick(box) {
