@@ -153,10 +153,10 @@ function Drag(e, box) {
       var deltaX = e.clientX - currentPosX;
       var deltaY = e.clientY - currentPosY;
     }
-    
+
     // Set new position:
-    box.style.top = box.offsetTop + deltaY + "px";//control Y
-    box.style.left = box.offsetLeft + deltaX + "px";//control X
+    box.style.top = (box.offsetTop + deltaY) + "px";//control Y
+    box.style.left = (box.offsetLeft + deltaX) + "px";//control X
 
     // save current position
     if ('ontouchstart' in window) {
