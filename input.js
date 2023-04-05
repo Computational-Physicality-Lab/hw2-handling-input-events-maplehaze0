@@ -107,59 +107,6 @@ function DragStart(e, box) {
     }
   }
 }
-// function DragStart(e, box) {
-//   console.log("drag start");
-//   if (can_move){
-//     e = e || window.event;
-//     e.preventDefault();
-
-//     // get first position
-//     currentPosX = e.clientX;
-//     currentPosY = e.clientY;
-    
-//     // save initial position
-//     startPosX = box.offsetLeft;
-//     startPosY = box.offsetTop;
-
-//     //get now
-//     NOW_USE = box.classList[1];
-
-//     const handleDrag = (e) => Drag(e, box);
-//     const handleDragEnd = (e) => DragEnd(e, box, handleDrag, handleDragEnd);
-//     FASTSTOP=1;
-//     FastStop(box, handleDrag, handleDragEnd);
-
-//     box.addEventListener("mousemove", handleDrag);
-//     box.addEventListener("mouseup", handleDragEnd);
-//   }
-// }
-
-// function TouchStart(e, box) {
-//   console.log("touch start");
-//   if (can_move){
-//     e = e || window.event;
-//     e.preventDefault();
-
-//     // get first position
-//     currentPosX = e.clientX;
-//     currentPosY = e.clientY;
-    
-//     // save initial position
-//     startPosX = box.offsetLeft;
-//     startPosY = box.offsetTop;
-
-//     //get now
-//     NOW_USE = box.classList[1];
-
-//     const handleTouch = (e) => Touch(e, box);
-//     const handleTouchEnd = (e) => TouchEnd(e, box, handleTouch, handleTouchEnd);
-//     FASTSTOP=1;
-//     FastStopTouch(box, handleTouch, handleTouchEnd);
-
-//     box.addEventListener("touchmove", handleTouch);
-//     box.addEventListener("touchend", handleTouchEnd);
-//   }
-// }
 
 function FastStop(select_box, handleDrag, handleDragEnd) {
   console.log("fast stop");
@@ -179,29 +126,13 @@ function FastStop(select_box, handleDrag, handleDragEnd) {
     }
   });
 }
-// function FastStopTouch(select_box, handleTouch, handleTouchEnd) {
-//   console.log("fast stop");
-//   document.addEventListener('touchcancel', (e) => {
-//     if (e.keyCode === 27 && NOW_USE == select_box.classList[1] && FASTSTOP==1) {
-//       FASTSTOP = 0
-//       // console.log("FastStop");
-//       can_move = 0;
-//       select_box.style.left = startPosX + "px";
-//       select_box.style.top = startPosY + "px";
-//       select_box.removeEventListener("touchend", handleTouchEnd);
-//       select_box.removeEventListener("touchstart", TouchStart);
-//       select_box.removeEventListener("touchmove", handleTouch);
-//       re_start_single(select_box);
-//       can_change = 1;
-//       // document.removeEventListener('keydown', arguments.callee);
-//     }
-//   });
-// }
+
 
 
 function Drag(e, box) {
   console.log("drag");
   if (can_move){
+    console.log("dragging");
     e = e || window.event;
     e.preventDefault();
 
@@ -217,24 +148,7 @@ function Drag(e, box) {
     currentPosY = e.clientY;
   }
 }
-// function Touch(e, box) {
-//   console.log("Touch");
-//   if (can_move){
-//     e = e || window.event;
-//     e.preventDefault();
 
-//     var deltaX = e.clientX - currentPosX;
-//     var deltaY = e.clientY - currentPosY;
-
-//     // Set new position:
-//     box.style.top = box.offsetTop + deltaY + "px";//control Y
-//     box.style.left = box.offsetLeft + deltaX + "px";//control X
-
-//     // save current position
-//     currentPosX = e.clientX;
-//     currentPosY = e.clientY;
-//   }
-// }
 
 
 function DragEnd(e, box, handleDrag, handleDragEnd) {
@@ -278,40 +192,6 @@ function DragEnd(e, box, handleDrag, handleDragEnd) {
   can_change = 1;
 }
 
-// function TouchEnd(e, box, handleTouch, handleTouchEnd) {
-//   e = e || window.event;
-//   e.preventDefault();
-//   // console.log(box);
-//   var rect = box.getBoundingClientRect();
-//   var deltaX = e.clientX - currentPosX;
-//   var deltaY = e.clientY - currentPosY;
-
-//   // console.log(startPosX, startPosY.offsetTop + deltaY,box.offsetLeft + deltaX)
-//   console.log("touch end");
-//   if (rect.left == startPosX + deltaX && rect.top == startPosY + deltaY && can_change) {
-//     var nowColor = box.style.backgroundColor;
-//     console.log(nowColor);
-//     if (nowColor == "red"){
-//       box.style.backgroundColor = "blue";
-    
-//       //set other box to red
-//       document.querySelectorAll('.target').forEach(function(otherBox) {
-//         if (otherBox != box) {
-//           otherBox.style.backgroundColor = "red";
-//         }
-//       });
-//     } else {
-//       box.style.backgroundColor = "red";
-//     }
-//     can_change = 0;
-//   }
-
-//   // Stop moving when mouse button is released
-//   box.removeEventListener("touchmove", handleTouch);
-//   box.removeEventListener("touchend", handleTouchEnd);
-//   can_move = 1;
-//   can_change = 1;
-// }
 
 
 function Stick(e, box) {
