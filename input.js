@@ -132,7 +132,6 @@ function FastStop(select_box, handleDrag, handleDragEnd) {
 function Drag(e, box) {
   console.log("drag");
   if (can_move){
-    console.log("dragging");
     e = e || window.event;
     e.preventDefault();
 
@@ -146,6 +145,8 @@ function Drag(e, box) {
     // save current position
     currentPosX = e.clientX;
     currentPosY = e.clientY;
+    console.log(currentPosX);
+    console.log(currentPosY);
   }
 }
 
