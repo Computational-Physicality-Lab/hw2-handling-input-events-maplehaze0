@@ -159,6 +159,7 @@ function Drag(e, box) {
       box.style.top = (startPosY  + deltaY) + "px";//control Y
       box.style.left = (startPosX + deltaX) + "px";//control X
       console.log(box.style.top, box.style.left);
+      console.log(deltaX, deltaY);
     } else {
 
       var deltaX = e.clientX - currentPosX;
