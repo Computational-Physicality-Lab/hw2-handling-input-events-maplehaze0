@@ -113,7 +113,6 @@ function DragStart(e, box) {
       currentPosY = e.touches[0].pageY;
       box.addEventListener("touchmove", handleDrag);
       box.addEventListener("touchend", handleDragEnd);
-      // box.addEventListener("touchcancel", handleDragEnd);
     } else {
       currentPosX = e.clientX;
       currentPosY = e.clientY;
@@ -137,7 +136,18 @@ function FastStop(select_box, handleDrag, handleDragEnd) {
       select_box.removeEventListener("mousemove", handleDrag);
       re_start_single(select_box);
       can_change = 1;
-      // document.removeEventListener('keydown', arguments.callee);
+    }
+    if (e.keyCode === 27 && NOW_USE == select_box.classList[1] && FASTSTOP==1) {
+      FASTSTOP = 0
+      // console.log("FastStop");
+      can_move = 0;
+      select_box.style.left = startPosX + "px";
+      select_box.style.top = startPosY + "px";
+      select_box.removeEventListener("mouseup", handleDragEnd);
+      select_box.removeEventListener("mousedown", DragStart);
+      select_box.removeEventListener("mousemove", handleDrag);
+      re_start_single(select_box);
+      can_change = 1;
     }
   });
 }
@@ -152,8 +162,6 @@ function Drag(e, box) {
 
     if ('ontouchstart' in window) {
 
-      // currentPosX = e.touches[0].pageX;
-      // currentPosY = e.touches[0].pageY;
       var deltaX = e.touches[0].pageX - currentPosX;
       var deltaY = e.touches[0].pageY - currentPosY;
       box.style.top = (box.offsetTop  + deltaY) + "px";//control Y
@@ -161,8 +169,6 @@ function Drag(e, box) {
       currentPosX = e.touches[0].pageX;
       currentPosY = e.touches[0].pageY;
 
-      console.log(box.style.top, box.style.left);
-      console.log(deltaX, deltaY);
     } else {
 
       var deltaX = e.clientX - currentPosX;
@@ -292,7 +298,6 @@ function StickEnd(e, box, handleDrag, handleDragEnd){
   box.removeEventListener("mouseup", handleDragEnd);
   can_change = 1;
   can_move = 0;
-  // box.addEventListener("mousedown", DragStart);
 
 }
 
@@ -305,6 +310,59 @@ function TouchStickEnd(e, box, handleTouch, handleTouchEnd){
   box.removeEventListener("touchup", handleTouchEnd);
   can_change = 1;
   can_move = 0;
-  // box.addEventListener("mousedown", DragStart);
 
+}
+
+function stretch(e, box) {
+  console.log("stretch");
+  if (can_move) {
+    e = e || window.event;
+    e.preventDefault();
+    const finger1 = e.touches[0];
+    const finger2 = e.touches[1];
+    const fingerDistance = Math.sqrt(Math.pow(finger2.pageX - finger1.pageX, 2) + Math.pow(finger2.pageY - finger1.pageY, 2));
+    const boxWidth = box.offsetWidth;
+    const boxHeight = box.offsetHeight;
+    const boxLeft = box.offsetLeft;
+    const boxTop = box.offsetTop;
+    const newWidth = Math.max(boxWidth + fingerDistance - initialFingerDistance, 0);
+    const newHeight = Math.max(boxHeight + fingerDistance - initialFingerDistance, 0);
+    const newLeft = boxLeft - (newWidth - boxWidth) / 2;
+    const newTop = boxTop - (newHeight - boxHeight) / 2;
+    box.style.width = newWidth + "px";
+    box.style.height = newHeight + "px";
+    box.style.left = newLeft + "px";
+    box.style.top = newTop + "px";
+  }
+}
+
+function stretchStart(e, box) {
+  console.log("stretch start");
+  if (can_move) {
+    e = e || window.event;
+    e.preventDefault();
+    initialFingerDistance = Math.sqrt(Math.pow(e.touches[1].pageX - e.touches[0].pageX, 2) + Math.pow(e.touches[1].pageY - e.touches[0].pageY, 2));
+    box.addEventListener("touchmove", stretch);
+  }
+}
+
+function stretchEnd(e, box) {
+  console.log("stretch end");
+  if (can_move) {
+    e = e || window.event;
+    e.preventDefault();
+    initialFingerDistance = null;
+    box.removeEventListener("touchmove", stretch);
+  }
+}
+
+function addstretchEvent(box) {
+  if ('ontouchstart' in window) {
+    box.addEventListener("touchstart", (e) => {
+      if (e.touches.length === 2) {
+        stretchStart(e, box);
+      }
+    });
+    box.addEventListener("touchend", stretchEnd);
+  }
 }
