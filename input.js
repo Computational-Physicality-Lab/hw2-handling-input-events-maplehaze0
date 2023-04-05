@@ -44,6 +44,7 @@ function re_start_single(select_box) {
 
 function addTouchOrClickEvent(box) {
   let clickedOrTouchedTimes = 0;
+  let handleEvent = null;
 
   const doClickOrTouch = () => {
     clickedOrTouchedTimes++;
@@ -53,7 +54,15 @@ function addTouchOrClickEvent(box) {
     clickedOrTouchedTimes = 0;
   };
 
-  const handleEvent = (e) => {
+  const removeEvent = () => {
+    if ('ontouchstart' in window) {
+      box.removeEventListener("touchstart", handleEvent);
+    } else {
+      box.removeEventListener("mousedown", handleEvent);
+    }
+  }
+
+  handleEvent = (e) => {
     doClickOrTouch();
     setTimeout(() => {
       if (clickedOrTouchedTimes === 1 && can_change) {
@@ -65,6 +74,7 @@ function addTouchOrClickEvent(box) {
         Stick(e, box);
       }
       reset();
+      removeEvent();
     }, 500);
   };
 
@@ -75,15 +85,12 @@ function addTouchOrClickEvent(box) {
   }
 }
 
+
 function DragStart(e, box) {
   console.log("drag start");
   if (can_move){
     e = e || window.event;
     e.preventDefault();
-
-    // get first position
-    currentPosX = e.clientX;
-    currentPosY = e.clientY;
     
     // save initial position
     startPosX = box.offsetLeft;
@@ -98,10 +105,14 @@ function DragStart(e, box) {
     FastStop(box, handleDrag, handleDragEnd);
 
     if ('ontouchstart' in window) {
+      currentPosX = e.touches[0].clientX;
+      currentPosY = e.touches[0].clientY;
       box.addEventListener("touchmove", handleDrag);
       box.addEventListener("touchend", handleDragEnd);
       // box.addEventListener("touchcancel", handleDragEnd);
     } else {
+      currentPosX = e.clientX;
+      currentPosY = e.clientY;
       box.addEventListener("mousemove", handleDrag);
       box.addEventListener("mouseup", handleDragEnd);
     }
@@ -143,8 +154,13 @@ function Drag(e, box) {
     box.style.left = box.offsetLeft + deltaX + "px";//control X
 
     // save current position
-    currentPosX = e.clientX;
-    currentPosY = e.clientY;
+    if ('ontouchstart' in window) {
+      currentPosX = e.touches[0].clientX;
+      currentPosY = e.touches[0].clientY;
+    } else {
+      currentPosX = e.clientX;
+      currentPosY = e.clientY;
+    }
     console.log(currentPosX);
     console.log(currentPosY);
   }
