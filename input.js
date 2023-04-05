@@ -179,24 +179,24 @@ function FastStop(select_box, handleDrag, handleDragEnd) {
     }
   });
 }
-function FastStopTouch(select_box, handleTouch, handleTouchEnd) {
-  console.log("fast stop");
-  document.addEventListener('touchcancel', (e) => {
-    if (e.keyCode === 27 && NOW_USE == select_box.classList[1] && FASTSTOP==1) {
-      FASTSTOP = 0
-      // console.log("FastStop");
-      can_move = 0;
-      select_box.style.left = startPosX + "px";
-      select_box.style.top = startPosY + "px";
-      select_box.removeEventListener("touchend", handleTouchEnd);
-      select_box.removeEventListener("touchstart", TouchStart);
-      select_box.removeEventListener("touchmove", handleTouch);
-      re_start_single(select_box);
-      can_change = 1;
-      // document.removeEventListener('keydown', arguments.callee);
-    }
-  });
-}
+// function FastStopTouch(select_box, handleTouch, handleTouchEnd) {
+//   console.log("fast stop");
+//   document.addEventListener('touchcancel', (e) => {
+//     if (e.keyCode === 27 && NOW_USE == select_box.classList[1] && FASTSTOP==1) {
+//       FASTSTOP = 0
+//       // console.log("FastStop");
+//       can_move = 0;
+//       select_box.style.left = startPosX + "px";
+//       select_box.style.top = startPosY + "px";
+//       select_box.removeEventListener("touchend", handleTouchEnd);
+//       select_box.removeEventListener("touchstart", TouchStart);
+//       select_box.removeEventListener("touchmove", handleTouch);
+//       re_start_single(select_box);
+//       can_change = 1;
+//       // document.removeEventListener('keydown', arguments.callee);
+//     }
+//   });
+// }
 
 
 function Drag(e, box) {
