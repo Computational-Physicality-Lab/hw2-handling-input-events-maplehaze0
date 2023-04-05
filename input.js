@@ -28,7 +28,8 @@ function start_program() {
     var select_box = boxes[i];
     select_box.classList.add(name);
     select_box.style.cursor = "move";
-
+    
+    addstretchEvent(select_box);
     addTouchOrClickEvent(select_box);
     num++;
   }
