@@ -156,11 +156,11 @@ function Drag(e, box) {
       // currentPosY = e.touches[0].pageY;
       var deltaX = e.touches[0].pageX - currentPosX;
       var deltaY = e.touches[0].pageY - currentPosY;
-      box.style.top = (startPosY  + deltaY) + "px";//control Y
-      box.style.left = (startPosX + deltaX) + "px";//control X
+      box.style.top = (box.offsetTop  + deltaY) + "px";//control Y
+      box.style.left = (box.offsetLeft + deltaX) + "px";//control X
       currentPosX = e.touches[0].pageX;
       currentPosY = e.touches[0].pageY;
-      
+
       console.log(box.style.top, box.style.left);
       console.log(deltaX, deltaY);
     } else {
