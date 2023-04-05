@@ -94,8 +94,8 @@ function DragStart(e, box) {
     
     // save initial position
     if ('ontouchstart' in window) {
-      startPosX = box.pageX;
-      startPosY = box.pageY;
+      startPosX = window.pageXOffset;
+      startPosY = window.pageYOffset;
     } else {
       startPosX = box.offsetLeft;
       startPosY = box.offsetTop;
