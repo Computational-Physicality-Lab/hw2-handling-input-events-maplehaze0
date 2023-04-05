@@ -109,8 +109,8 @@ function DragStart(e, box) {
     FastStop(box, handleDrag, handleDragEnd);
 
     if ('ontouchstart' in window) {
-      currentPosX = e.touches[0].clientX;
-      currentPosY = e.touches[0].clientY;
+      currentPosX = e.touches[0].pageX;
+      currentPosY = e.touches[0].pageY;
       box.addEventListener("touchmove", handleDrag);
       box.addEventListener("touchend", handleDragEnd);
       // box.addEventListener("touchcancel", handleDragEnd);
@@ -152,13 +152,14 @@ function Drag(e, box) {
 
     if ('ontouchstart' in window) {
 
-      currentPosX = e.touches[0].clientX;
-      currentPosY = e.touches[0].clientY;
+      currentPosX = e.touches[0].pageX;
+      currentPosY = e.touches[0].pageY;
       box.style.top = (box.pageY + deltaY) + "px";//control Y
       box.style.left = (box.pageX + deltaX) + "px";//control X
-      currentPosX = e.touches[0].clientX;
-      currentPosY = e.touches[0].clientY;
-
+      currentPosX = e.touches[0].pageX;
+      currentPosY = e.touches[0].pageY;
+      console.log("box.pageY", box.pageY);
+      console.log("currentPosX", box.pageY);
     } else {
 
       var deltaX = e.clientX - currentPosX;
@@ -169,7 +170,7 @@ function Drag(e, box) {
       currentPosY = e.clientY;
 
     }
-    console.log(box.pageY);
+    
   }
 }
 
