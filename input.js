@@ -16,6 +16,7 @@ var currentPosX = 0, currentPosY = 0;
 var can_change = 1;
 var can_move = 0;
 var NOW_USE = 0;
+var NOW_SELECT = 0;
 var FASTSTOP = 0;
 
 start_program();
@@ -28,7 +29,7 @@ function start_program() {
     var select_box = boxes[i];
     select_box.classList.add(name);
     select_box.style.cursor = "move";
-    
+
     addstretchEvent(select_box);
     addTouchOrClickEvent(select_box);
     num++;
@@ -124,9 +125,10 @@ function DragStart(e, box) {
 }
 
 function FastStop(select_box, handleDrag, handleDragEnd) {
-  console.log("fast stop");
+
   document.addEventListener('keydown', (e) => {
     if (e.keyCode === 27 && NOW_USE == select_box.classList[1] && FASTSTOP==1) {
+      console.log("fast stop");
       FASTSTOP = 0
       // console.log("FastStop");
       can_move = 0;
@@ -139,6 +141,7 @@ function FastStop(select_box, handleDrag, handleDragEnd) {
       can_change = 1;
     }
     if (e.keyCode === 27 && NOW_USE == select_box.classList[1] && FASTSTOP==1) {
+      console.log("fast stop");
       FASTSTOP = 0
       // console.log("FastStop");
       can_move = 0;
@@ -201,7 +204,7 @@ function DragEnd(e, box, handleDrag, handleDragEnd) {
     console.log(nowColor);
     if (nowColor == "red"){
       box.style.backgroundColor = "blue";
-    
+      NOW_SELECT = box;
       //set other box to red
       document.querySelectorAll('.target').forEach(function(otherBox) {
         if (otherBox != box) {
@@ -359,11 +362,13 @@ function stretchEnd(e, box) {
 
 function addstretchEvent(box) {
   if ('ontouchstart' in window) {
-    box.addEventListener("touchstart", (e) => {
-      if (e.touches.length === 2) {
-        stretchStart(e, box);
-      }
-    });
-    box.addEventListener("touchend", stretchEnd);
+    if (NOW_SELECT == box) {
+      box.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 2) {
+          stretchStart(e, box);
+        }
+      });
+      box.addEventListener("touchend", stretchEnd);
+    }
   }
 }
