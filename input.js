@@ -152,12 +152,12 @@ function Drag(e, box) {
 
     if ('ontouchstart' in window) {
 
+      currentPosX = e.touches[0].pageX;
+      currentPosY = e.touches[0].pageY;
       var deltaX = currentPosX - startPosX;
       var deltaY = currentPosY - startPosY;
       box.style.top = (startPosY  + deltaY) + "px";//control Y
       box.style.left = (startPosX + deltaX) + "px";//control X
-      currentPosX = e.touches[0].pageX;
-      currentPosY = e.touches[0].pageY;
       console.log(box.style.top, box.style.left);
     } else {
 
