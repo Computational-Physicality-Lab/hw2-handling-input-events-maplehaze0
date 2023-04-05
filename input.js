@@ -167,7 +167,9 @@ function Drag(e, box) {
       box.style.left = (box.offsetLeft + deltaX) + "px";//control X
       currentPosX = e.clientX;
       currentPosY = e.clientY;
+
     }
+    console.log(box.pageY);
   }
 }
 
