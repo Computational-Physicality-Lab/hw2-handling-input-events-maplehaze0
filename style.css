@@ -1,0 +1,823 @@
+/* Your Code Here */
+
+body {
+  width: 100%;
+  height: 200%;
+}
+
+
+img.logo {
+
+    /* position */
+    position: absolute;
+    left: 22vh;
+    top: 6vh;
+
+    /* size */
+    width: 10%;
+    height: 9%;
+}
+img.logo:hover {
+
+    /* transform */
+    animation: swing 0.8s;
+}
+
+img.home {
+
+    /* position */
+    position: absolute;
+    top: 25vh; 
+    
+    /* size */
+    width: 100%;
+    height: 44vh;   
+
+}
+
+div.shopping_cart {
+
+    /* location */
+    position: absolute;
+    top: 6.5vh; 
+    left: 1325px;
+
+    /* size */
+    width: 200px;
+    height: 200px;
+}
+
+img.cart {
+
+    /* size */
+    height: 50px;
+    
+    /* transform */
+    transition: background-color 0.8s, border-radius 0.8s;
+
+}
+
+@keyframes swing {
+    25% { transform: translateX(5px); }
+    50% { transform: translateX(-5px); }
+    75% { transform: translateX(2px); }
+    95% { transform: translateX(-2px); }   
+    100% { transform: translateX(0px); }     
+}
+
+img.cart:hover {
+
+    /* transform */ 
+    height: 60px;
+}
+p.cart_num {
+    
+        /* position */
+        position: relative;
+        top: -40px;
+        left: 50px;
+    
+        /* size */
+        color: rgb(197, 18, 48);
+        font-size: 20px;
+        font-weight: bold;
+}
+
+h1.title {
+    /* position */
+    position: absolute;
+    top: 5vh;
+    left: 50vw;
+}
+
+
+hr.upper_line {
+
+    /* position */
+    position: absolute;
+    margin-top: 16vh;
+
+    /* style */
+    width: 100vw;
+    border: 1px solid;
+    color: rgba(201, 201, 201, 0.8);
+}
+
+hr.upper_red {
+
+    /* position */
+    position: absolute;
+    margin-top: -1vh;
+
+    /* style */
+    width: 100vw;
+    border-top: solid 20px;
+    color: rgb(197, 18, 48)
+}
+
+
+
+
+
+a.shirt_b {
+
+    /* position */
+    position: absolute;
+    top: 20vh;
+    left: 12vw;
+
+    color: rgba(197, 18, 48, 0.771);
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    transition: background-color 0.8s, border-radius 0.8s;
+}
+a.shirt_b:hover{
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    background-color: rgba(197, 18, 48, 0.15);
+    /* border-radius: 130%; */
+}
+
+a.hoodies {
+
+    /* position */
+    position: absolute;
+    top: 20vh;
+    left: 28vw; 
+
+    color: rgba(197, 18, 48, 0.771);
+    
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    transition: background-color 0.8s, border-radius 0.8s;
+}
+a.hoodies:hover{
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    background-color: rgba(197, 18, 48, 0.15);
+    /* border-radius: 130%; */
+}
+
+a.your {
+
+    /* position */
+    position: absolute;
+    top: 20vh;
+    left: 45vw;
+    
+    color: rgba(197, 18, 48, 0.771);
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    transition: background-color 0.8s, border-radius 0.8s;
+}
+a.your:hover{
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    background-color: rgba(197, 18, 48, 0.15);
+    /* border-radius: 130%; */
+}
+
+a.about {
+
+    /* position */
+    position: absolute;
+    top: 20vh;
+    left: 64vw; 
+
+    color: rgba(197, 18, 48, 0.771);
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    transition: background-color 0.8s, border-radius 0.8s;
+}
+a.about:hover{
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    background-color: rgba(197, 18, 48, 0.15);
+    /* border-radius: 130%; */
+}
+
+a.account {
+
+    /* position */
+    position: absolute;
+    top: 20vh;
+    left: 80vw; 
+
+    color: rgba(197, 18, 48, 0.771);
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    transition: background-color 0.8s, border-radius 0.8s;
+    
+}
+a.account:hover{
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    background-color: rgba(197, 18, 48, 0.15);
+    /* border-radius: 130%; */
+}
+
+.left_border {
+
+    /* position */
+    position: absolute;
+    bottom: 8vh;
+    left: 12vw; 
+
+    /* size */
+    width: 33vw;
+    height: 18vh;
+
+    /* style */
+    border-radius: 10px 10px 10px 10px;
+}
+
+.right_border {
+
+    /* position */
+    position: absolute;
+    z-index: 1;
+    bottom: 8vh;
+    right: 12vw; 
+
+    /* size */
+    width: 33vw;
+    height: 18vh;
+
+    /* style */
+    border-radius: 10px 10px 10px 10px;
+}
+
+div.footer {
+    /* position */
+    position: absolute;
+    bottom: -70px;
+}
+
+div.footer_detail {
+    /* position */
+    position: absolute;
+    bottom: -150%;
+}
+
+div.footer_detail_forDetail{
+    /* position */
+    position: absolute;
+    bottom: -50%;
+}
+
+
+hr.lower_red {
+
+    /* position */
+    z-index: 1;
+    position: relative;
+    /* bottom: -35px; */
+    /* padding-bottom: 8px; */
+
+    /* style */
+    width: 100vw;
+    border-bottom: solid 60px;
+    color: rgb(197, 18, 48);
+}
+
+
+
+a.contact {
+
+    /* position */
+    position: relative;
+    z-index: 2;
+    bottom: 7vh;
+    left: 6vw; 
+
+    color: rgba(255, 255, 255, 0.65);
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    transition: background-color 0.8s, border-radius 0.8s;
+    
+}
+a.contact:hover{
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    background-color: rgba(230, 224, 224, 0.468);
+    /* border-radius: 130%; */
+}
+
+a.site {
+
+    /* position */
+    position: relative;
+    z-index: 2;
+    bottom: 7vh;
+    left: 16vw; 
+
+    color: rgba(255, 255, 255, 0.65);
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    transition: background-color 0.8s, border-radius 0.8s;
+    
+}
+a.site:hover{
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    background-color: rgba(230, 224, 224, 0.468);
+    /* border-radius: 130%; */
+}
+
+a.privacy {
+
+    /* position */
+    position: relative;
+    z-index: 2;
+    bottom: 7vh;
+    left: 26vw; 
+
+    color: rgba(255, 255, 255, 0.65);
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    transition: background-color 0.8s, border-radius 0.8s;
+    
+}
+a.privacy:hover{
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    background-color: rgba(230, 224, 224, 0.468);
+    /* border-radius: 130%; */
+}
+
+a.careers {
+
+    /* position */
+    position: relative;
+    z-index: 2;
+    bottom: 7vh;
+    left: 36vw; 
+
+    color: rgba(255, 255, 255, 0.65);
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    transition: background-color 0.8s, border-radius 0.8s;
+    
+}
+a.careers:hover{
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    background-color: rgba(230, 224, 224, 0.468);
+    /* border-radius: 130%; */
+}
+
+a.reviews {
+
+    /* position */
+    position: relative;
+    z-index: 2;
+    bottom: 7vh;
+    left: 46vw; 
+
+    color: rgba(255, 255, 255, 0.65);
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    transition: background-color 0.8s, border-radius 0.8s;
+    
+}
+a.reviews:hover{
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    background-color: rgba(230, 224, 224, 0.468);
+    /* border-radius: 130%; */
+}
+
+a.design {
+
+    /* position */
+    position: relative;
+    z-index: 2;
+    bottom: 7vh;
+    left: 56vw; 
+
+    color: rgba(255, 255, 255, 1);
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    transition: background-color 0.8s, border-radius 0.8s;
+}
+
+
+/* product.html */
+
+h1.our {
+
+    /* position */
+    position: absolute;
+    top: 25vh;
+    left: 12vw;
+
+}
+
+.shirt_block {
+
+    /* display */
+    display: flex;
+    flex-wrap: wrap;
+
+    /* position */
+    position: absolute;
+    top: 35vh;
+    left: 10vw;
+    
+    /* size */
+    width: 90%;
+    height: 200%;
+
+}
+
+.shirt {
+
+    /* position */
+    position: relative;
+    margin: 2%;
+
+    /* size */
+    width: 300px;
+    height: 520px;
+
+    /* style */
+
+    border: 2px  #c51230 solid;
+    border-radius: 10px 10px 10px 10px;
+}
+.shirt > img {
+
+    /* size */
+    width: 300px;
+    height: 350px;
+
+    /* style */
+    border-radius: 10px 10px 0 0;
+
+}
+.shirt > h2 {
+    color: #c51230
+}
+
+
+.shirt {
+
+    /* position */
+    position: relative;
+    margin: 2%;
+
+    /* size */
+    width: 300px;
+    height: 520px;
+
+
+    /* style */
+    border: 2px  #c51230 solid;
+    border-radius: 10px 10px 10px 10px;
+}
+.shirt > img {
+
+    /* size */
+    width: 300px;
+    height: 350px;
+
+    /* style */
+    border-radius: 10px 10px 0 0;
+
+}
+.shirt > h2 {
+    color: #c51230
+}
+
+.shirt {
+
+    /* position */
+    position: relative;
+    margin: 2%;
+
+    /* size */
+    width: 300px;
+    height: 520px;
+
+
+    /* style */
+    border: 2px  #c51230 solid;
+    border-radius: 10px 10px 10px 10px;
+}
+.shirt > img {
+
+    /* size */
+    width: 300px;
+    height: 350px;
+
+    /* style */
+    border-radius: 10px 10px 0 0;
+}
+.shirt > h2 {
+    color: #c51230
+}
+
+
+.shirt {
+
+    /* position */
+    position: relative;
+    margin: 2%;
+
+    /* size */
+    width: 300px;
+    height: 520px;
+
+
+    /* style */
+    border: 2px  #c51230 solid;
+    border-radius: 10px 10px 10px 10px;
+
+}
+.shirt > img {
+
+    /* size */
+    width: 300px;
+    height: 350px;
+
+    /* style */
+    border-radius: 10px 10px 0 0;
+
+}
+.shirt > h2 {
+    color: #c51230
+}
+
+
+button.view{
+
+    /* location */
+    margin-left: 12%;
+
+    /* size */
+    width: 90px;
+    height: 40px;
+
+    /* style */
+    color: white;
+    background-color: rgb(256, 18, 48);
+    border-radius: 5px 5px 5px 5px;
+    
+    /* transition */
+    transition-duration: 0.4s;
+
+}
+
+button.see{
+
+    /* location */
+    margin-left: 10%;
+
+    /* size */
+    width: 80px;
+    height: 40px;
+
+    /* style */
+    color: white;
+    background-color: rgb(256, 18, 48);
+    border-radius: 5px 5px 5px 5px;
+
+    /* transition */
+    transition-duration: 0.4s;
+
+}
+
+button:hover{
+    background-color: rgba(197, 18, 48, 0.5);
+}
+
+/* not_implemented */
+img.not_imp {
+    /* position */
+    position: absolute;
+    left: 35%;
+
+    /* size */
+    width: 500px;
+    height: 500px;
+
+    /* style */
+    opacity: 0.3;
+}
+p.nono {
+
+    /* position */
+    position: absolute;
+    bottom: 10%;
+    left: 27%;
+
+    /* style */
+    font-size: 40px;
+    color: rgba(0, 0, 0, 0.65);
+
+}
+
+
+/* details.html */
+.details_left {
+
+    /* display */
+    display: flex;
+    flex-wrap: wrap;
+
+    /* position */
+    position: absolute;
+    top: 250px;
+    left: 200px;
+    
+    /* style */
+    height: 180px;
+    width: 360px;
+}
+.details_left > img {
+
+    /* size */
+    width: 406px;
+    height: 473px;
+
+    /* style */
+    border-radius: 10px 10px 10px 10px;
+}
+
+.details_right {
+
+    /* display */
+    /* display: flex; */
+    flex-wrap: wrap;
+
+    /* position */
+    position: absolute;
+    top: 350px;
+    left: 700px;
+    
+    /* style */
+    height: 180px;
+    width: 600px;
+}
+
+.details_right > h2{
+    font-size: 40px;
+    color: #c51230
+}
+
+.details_right > p{
+    font-size: 20px;
+    color: #c51230
+}
+
+.side {
+    /* display */
+    display: flex;
+    flex-wrap: wrap;
+
+    /* style */
+    color:rgb(146, 144, 144);
+    font-size: 20px;
+}
+.side > p {
+    /* location */
+    position: relative;
+    top: -12px;
+}
+
+.side > input{
+    
+    /* location */
+    margin-left: 3%;
+
+    /* size */
+    width: 55px;
+    height: 35px;
+
+    /* style */
+    background-color:#c51230;
+    color:#fff;
+    border-radius:8px;
+
+    /* transform */
+    transition: background-color 0.8s, border-radius 0.8s;
+}
+
+.side > input:hover{
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    background-color: rgba(227, 85, 85, 0.468);
+    /* border-radius: 130%; */
+}
+
+
+
+.color {
+    /* display */
+    display: flex;
+    flex-wrap: wrap;
+
+    /* style */
+    color:rgb(146, 144, 144);
+    font-size: 20px;
+}
+
+.color > input{
+    
+    /* location */
+    margin-left: 3%;
+
+    /* size */
+    width: 55px;
+    height: 35px;
+
+    /* style */
+    background-color:#c51230;
+    color:#fff;
+    border-radius:8px;
+  
+    /* transform */
+    transition: background-color 0.8s, border-radius 0.8s;
+}
+
+.color > p {
+    /* location */
+    position: relative;
+    top: -12px;
+}
+
+.color > input:hover{
+
+    /* underline */
+    text-decoration: none;
+
+    /* transform */
+    /* background-color: rgba(230, 112, 112, 0.468); */
+    border-radius: 50%;
+}
+
