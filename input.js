@@ -93,9 +93,13 @@ function DragStart(e, box) {
     e.preventDefault();
     
     // save initial position
-    startPosX = box.offsetLeft;
-    startPosY = box.offsetTop;
-
+    if ('ontouchstart' in window) {
+      startPosX = box.pageX;
+      startPosY = box.pageY;
+    } else {
+      startPosX = box.offsetLeft;
+      startPosY = box.offsetTop;
+    }
     //get now
     NOW_USE = box.classList[1];
 
@@ -147,27 +151,23 @@ function Drag(e, box) {
     e.preventDefault();
 
     if ('ontouchstart' in window) {
+
       currentPosX = e.touches[0].clientX;
       currentPosY = e.touches[0].clientY;
+      box.style.top = (box.pageY + deltaY) + "px";//control Y
+      box.style.left = (box.pageX + deltaX) + "px";//control X
+      currentPosX = e.touches[0].clientX;
+      currentPosY = e.touches[0].clientY;
+
     } else {
+
       var deltaX = e.clientX - currentPosX;
       var deltaY = e.clientY - currentPosY;
-    }
-
-    // Set new position:
-    box.style.top = (box.offsetTop + deltaY) + "px";//control Y
-    box.style.left = (box.offsetLeft + deltaX) + "px";//control X
-
-    // save current position
-    if ('ontouchstart' in window) {
-      currentPosX = e.touches[0].clientX;
-      currentPosY = e.touches[0].clientY;
-    } else {
+      box.style.top = (box.offsetTop + deltaY) + "px";//control Y
+      box.style.left = (box.offsetLeft + deltaX) + "px";//control X
       currentPosX = e.clientX;
       currentPosY = e.clientY;
     }
-    console.log(currentPosX);
-    console.log(currentPosY);
   }
 }
 
